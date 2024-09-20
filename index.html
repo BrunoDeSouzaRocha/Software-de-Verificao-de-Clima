@@ -24,7 +24,7 @@
         <h1>quadrado Principal:</h1>
         <h2 class="cidadeEscolhida" id="cidadeEscolhida"></h2>
 
-        <img class="simboloTempoPrincipal" id="simboloTempoPrincipal" src="" alt="simboloTempo">
+        <img class="simboloTempo" id="simboloTempo" src="" alt="simboloTempo">
         <h3>Chuva:</h3>
         <h3 class="chuva" id="chuva">Chuva: </h3>
         <h3>Vento:</h3>
@@ -39,21 +39,23 @@
                     <!-- H1 de separação:  -->
                     <h1>quadrado Cidades:</h1>        
         <h3 class="rio" id="rio">Rio: </h3>
-        <h3 class="Sp" id="Sp">Sp: </h3>
-        <h3 class="st" id="st">Santa: </h3>
+        <h3 class="sp" id="sp">Sp: </h3>
+        <h3 class="df" id="df">Santa: </h3>
     </div>
 
     <div class="quadradoAlerta">
                     <!-- H1 de separação:  -->
                     <h1>quadrado alerta:</h1>
-        <img class="alertarImg" id="AlertarImg" src="" alt="alert">
+        <img class="alertarImg" id="alertarImg" src="" alt="alert">
         <h3 class="alertaTexto" id="alertaTexto"> ta perigoso</h3>
     </div>
 
     <div class="quadradoDataAtual">
-                    <!-- H1 de separação:  -->
-                    <h1>quadrado horas:</h1>
-        <div class="dataAtual" id="dataAtual"> 18/09 </div>
+        <!-- H1 de separação:  -->
+        <h1>quadrado Data:</h1>
+        <h2 class="diaAtual" id="diaAtual"></h2>
+        <h2 class="mesAtual" id="mesAtual"></h2>
+
     </div>
 
 
@@ -63,9 +65,9 @@
              <h1>Temperatura principa:</h1>
 
         <h2 class="grausPrincipal" id="grausPrincipal">26°C</h2>
-        <img class="simboloTempoPrincipal" id="simboloTempo" src="" alt="simboloTempo">
-        <h4 class="grausMaxima">30°</h4>
-        <h4 class="grausMinima">20°</h4>
+        <img class="simboloTempoPrincipal" id="simboloTempoPrincipal" src="" alt="simboloTempo">
+        <h4 class="grausMaxima" id="grausMaxima">30°</h4>
+        <h4 class="grausMinima" id="grausMinima">20°</h4>
         <h4 class="infoClima" id="infoClima">Parcialmente nublado</h4>
         <h2 class="horario" id="horario">Horario:</h2>
 
@@ -103,8 +105,8 @@
 
     <div class="switch">
         <!-- H1 de separação:  -->
-        <input type="checkbox" id="toggle" />
-        <label for="toggle" class="slider">
+        <input type="checkbox" class="toggle" id="toggle" />
+        <label for="toggle"  class="slider">
           <span class="label-celsius">°C</span>
           <span class="label-fahrenheit">°F</span>
         </label>
