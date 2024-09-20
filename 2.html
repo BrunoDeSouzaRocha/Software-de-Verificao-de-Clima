@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .weather-box {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .weather-box img {
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Previsão do Tempo para <span id="city-name"></span></h1>
+    <div id="weather"></div>
+
+    <script>
+        const apiKey = 'b67ce459b64ffeed00b9123a00175cbe';
+        const city = 'são paulo';
+
+        // Função para pegar os dados do clima
+        async function getWeatherForecast() {
+            const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`;
+            const urlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`;
+
+            try {
+                const responseForecast = await fetch(urlForecast);
+                const forecastData = await responseForecast.json();
+
+                const responseCurrent = await fetch(urlCurrent);
+                const currentData = await responseCurrent.json();
+
+                // Atualiza o nome da cidade
+                document.getElementById('city-name').textContent = currentData.name;
+
+                // Exibe a condição atual
+                const weatherBox = document.getElementById('weather');
+                weatherBox.innerHTML = `
+                    <div class="weather-box">
+                        <img src="http://openweathermap.org/img/wn/${currentData.weather[0].icon}@2x.png" alt="Weather Icon">
+                        <div>
+                            <p><strong>Condição atual:</strong> ${currentData.weather[0].description}</p>
+                            <p><strong>Temperatura atual:</strong> ${currentData.main.temp}°C</p>
+                            <p><strong>Temperatura máxima:</strong> ${currentData.main.temp_max}°C</p>
+                            <p><strong>Temperatura mínima:</strong> ${currentData.main.temp_min}°C</p>
+                            <p><strong>Vento:</strong> ${currentData.wind.speed} m/s</p>
+                            <p><strong>Umidade:</strong> ${currentData.main.humidity}%</p>
+                        </div>
+                    </div>
+                `;
+
+                // Encontra a previsão para os horários 9h, 12h, 15h, 18h
+                const forecastTimes = [9, 12, 15, 18];
+                forecastTimes.forEach(hour => {
+                    const forecast = forecastData.list.find(item => {
+                        const forecastDate = new Date(item.dt * 1000);
+                        return forecastDate.getHours() === hour;
+                    });
+
+                    if (forecast) {
+                        weatherBox.innerHTML += `
+                            <div class="weather-box">
+                                <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="Weather Icon">
+                                <div>
+                                    <p><strong>Previsão para ${hour}h:</strong></p>
+                                    <p><strong>Temperatura:</strong> ${forecast.main.temp}°C</p>
+                                    <p><strong>Condição:</strong> ${forecast.weather[0].description}</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+            } catch (error) {
+                console.error('Erro ao obter dados da API:', error);
+            }
+        }
+
+        // Executa a função ao carregar a página
+        getWeatherForecast();
+    </script>
+</body>
+</html>
