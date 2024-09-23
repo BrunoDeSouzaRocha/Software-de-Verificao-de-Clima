@@ -1,0 +1,636 @@
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+
+.phone-child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #090229;
+    width: 445px;
+    height: 2032px;
+}
+.hours {
+    font-weight: 300;
+}
+.nomedosite-txt {
+    line-break: anywhere;
+    width: 100%;
+}
+.nomedosite {
+    width: 154px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+.logo-icon {
+    width: 78px;
+    position: relative;
+    border-radius: 53px;
+    height: 120px;
+    object-fit: cover;
+}
+.logonome {
+    width: 243px;
+    height: 119px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.lupa-icon {
+    width: 25px;
+    position: relative;
+    height: 19px;
+    object-fit: cover;
+}
+.pesquise-a-localizao {
+    width: 161px;
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+.lupa-parent {
+    width: 201px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+    border-radius: 18px;
+    background-color: #685eff;
+    height: 43px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 6px 20px 6px 0px;
+    box-sizing: border-box;
+    gap: 15px;
+    font-size: 15px;
+    color: #fff;
+    font-family: 'Red Hat Display';
+}
+.header {
+    position: absolute;
+    top: 0px;
+    left: 0.28px;
+    background-color: #091325;
+    border: 1px solid #8e87fa;
+    box-sizing: border-box;
+    width: 444.7px;
+    height: 129px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: #ececec;
+    font-family: 'Red Rose';
+}
+.funoquadradoprincipal-1-icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 48px;
+    width: 429.8px;
+    height: 244px;
+    object-fit: cover;
+}
+.iconeclimaprincipal {
+    position: absolute;
+    top: 0px;
+    left: 321.78px;
+    width: 91px;
+    height: 52px;
+    object-fit: cover;
+}
+.titulocidade {
+    position: absolute;
+    top: 22px;
+    left: 32.78px;
+    display: inline-block;
+    width: 254px;
+    height: 26px;
+}
+.iconelugar {
+    position: absolute;
+    top: 18.66px;
+    left: 0px;
+    width: 32.1px;
+    height: 33px;
+    object-fit: cover;
+}
+.nomedacidade {
+    position: absolute;
+    top: 18.5px;
+    left: 14.1px;
+    width: 412.8px;
+    height: 52px;
+    font-size: 20px;
+}
+.fundochuva {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 22px;
+    background-color: rgba(122, 137, 255, 0.73);
+    width: 132.1px;
+    height: 54px;
+}
+.chuva1 {
+    position: absolute;
+    top: 9.99px;
+    left: 51.05px;
+    font-weight: 500;
+    display: inline-block;
+    width: 53px;
+    height: 17px;
+}
+.mmh {
+    position: absolute;
+    top: 24.99px;
+    left: 39.05px;
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76.1px;
+    height: 29.3px;
+}
+.iconechuva {
+    position: absolute;
+    top: 10.16px;
+    left: 14.81px;
+    width: 24.1px;
+    height: 33px;
+    object-fit: cover;
+}
+.chuva {
+    position: absolute;
+    top: 186.51px;
+    left: 17.82px;
+    width: 132.1px;
+    height: 54.3px;
+}
+.vento1 {
+    position: absolute;
+    top: 5.9px;
+    left: 56.45px;
+    font-weight: 500;
+    display: inline-block;
+    width: 56px;
+    height: 19px;
+}
+.kmh {
+    position: absolute;
+    top: 28.9px;
+    left: 39.45px;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 77px;
+}
+.iconevento {
+    position: absolute;
+    top: 6.35px;
+    left: 2.47px;
+    width: 46.3px;
+    height: 41.3px;
+    object-fit: cover;
+}
+.vento {
+    position: absolute;
+    top: 184.6px;
+    left: 154.42px;
+    width: 132.1px;
+    height: 54px;
+}
+.umidade1 {
+    position: absolute;
+    top: 5.99px;
+    left: 44.85px;
+    font-weight: 500;
+    display: inline-block;
+    width: 74px;
+    height: 17px;
+}
+.porcentagemumidade {
+    position: absolute;
+    top: 19.99px;
+    left: 45.85px;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46.3px;
+    height: 29.2px;
+}
+.iconeumidade {
+    position: absolute;
+    top: 5.08px;
+    left: 4.94px;
+    width: 36.4px;
+    height: 44.5px;
+    object-fit: cover;
+}
+.umidade {
+    position: absolute;
+    top: 186.51px;
+    left: 291.03px;
+    width: 132.1px;
+    height: 54px;
+    font-size: 14px;
+}
+.funoquadradoprincipal-1-parent {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 429.8px;
+    height: 244px;
+}
+.quadradonumeroum {
+    width: 429.8px;
+    position: relative;
+    height: 244px;
+}
+.quarado-principal {
+    position: absolute;
+    top: 150px;
+    left: 0.28px;
+    border-radius: 23px;
+    width: 444.7px;
+    height: 253px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    padding: 14px 1px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.retangulo1 {
+    align-self: stretch;
+    position: relative;
+    box-shadow: 8px 4px 4px rgba(0, 0, 0, 0.25) inset, 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 54px;
+    background-color: rgba(58, 52, 158, 0.52);
+    height: 126.7px;
+    z-index: 0;
+}
+.h-am {
+    margin: 0;
+}
+.horario11 {
+    align-self: stretch;
+    position: relative;
+    font-weight: 300;
+    display: inline-block;
+    height: 29.3px;
+    flex-shrink: 0;
+    z-index: 1;
+}
+.graus1 {
+    width: 96px;
+    position: absolute;
+    margin: 0 !important;
+    top: 90px;
+    left: 18.5px;
+    font-size: 20px;
+    font-weight: 800;
+    display: inline-block;
+    height: 28px;
+    flex-shrink: 0;
+    z-index: 2;
+}
+.iconeclima1 {
+    width: 89px;
+    position: absolute;
+    margin: 0 !important;
+    top: 15px;
+    left: 25.5px;
+    height: 75px;
+    object-fit: cover;
+    z-index: 3;
+}
+.horario1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 134px;
+    height: 152.8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+}
+.graus2 {
+    width: 81px;
+    position: absolute;
+    margin: 0 !important;
+    top: 74.55px;
+    left: 27.5px;
+    font-size: 20px;
+    font-weight: 800;
+    display: inline-block;
+    height: 29px;
+    flex-shrink: 0;
+    z-index: 2;
+}
+.iconeclima2 {
+    width: 89px;
+    position: absolute;
+    margin: 0 !important;
+    top: -0.45px;
+    left: 23.5px;
+    height: 75px;
+    object-fit: cover;
+    z-index: 3;
+}
+.horario2 {
+    position: absolute;
+    top: 162.45px;
+    left: 0px;
+    width: 134px;
+    height: 152.8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+}
+.graus3 {
+    width: 88px;
+    position: absolute;
+    margin: 0 !important;
+    top: 90.1px;
+    left: 22.5px;
+    font-size: 20px;
+    font-weight: 800;
+    display: inline-block;
+    height: 26px;
+    flex-shrink: 0;
+    z-index: 2;
+}
+.iconeclima3 {
+    width: 89px;
+    position: absolute;
+    margin: 0 !important;
+    top: -1.9px;
+    left: 22.5px;
+    height: 75px;
+    object-fit: cover;
+    z-index: 3;
+}
+.horario3 {
+    position: absolute;
+    top: 324.9px;
+    left: 0px;
+    width: 134px;
+    height: 152.8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+}
+.graus4 {
+    width: 88px;
+    position: absolute;
+    margin: 0 !important;
+    top: 89.64px;
+    left: 22.5px;
+    font-size: 20px;
+    font-weight: 800;
+    display: inline-block;
+    height: 27px;
+    flex-shrink: 0;
+    z-index: 2;
+}
+.iconeclima4 {
+    width: 89px;
+    position: absolute;
+    margin: 0 !important;
+    top: -0.36px;
+    left: 22.5px;
+    height: 75px;
+    object-fit: cover;
+    z-index: 3;
+}
+.horario4 {
+    position: absolute;
+    top: 487.36px;
+    left: 0px;
+    width: 134px;
+    height: 156.6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+}
+.horario1-parent {
+    width: 134px;
+    position: relative;
+    height: 644px;
+}
+.climahorarios {
+    width: 139px;
+    height: 658px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.iconepoint {
+    width: 21.1px;
+    position: relative;
+    height: 34.7px;
+    object-fit: cover;
+}
+.rio-de-janeiro-container {
+    width: 139px;
+    position: relative;
+    display: inline-block;
+    height: 24px;
+    flex-shrink: 0;
+}
+.grausrj {
+    width: 99px;
+    position: relative;
+    font-size: 24px;
+    display: inline-block;
+    height: 31px;
+    flex-shrink: 0;
+}
+.rj {
+    width: 277px;
+    height: 34.7px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 20px;
+}
+.iconepoint1 {
+    width: 36.2px;
+    position: relative;
+    height: 34.2px;
+    object-fit: cover;
+}
+.so-paulo1 {
+    margin: 0;
+    white-space: pre-wrap;
+}
+.so-paulo {
+    width: 114px;
+    position: relative;
+    display: inline-block;
+    height: 44px;
+    flex-shrink: 0;
+}
+.graussp {
+    width: 104px;
+    position: relative;
+    display: inline-block;
+    height: 44px;
+    flex-shrink: 0;
+}
+.sp {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.braslia {
+    width: 84px;
+    position: relative;
+    display: inline-block;
+    height: 43px;
+    flex-shrink: 0;
+}
+.grausdf {
+    position: relative;
+}
+.df {
+    width: 257px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 28px;
+}
+.grausmetropolis {
+    width: 277px;
+    border-radius: 22px;
+    background-color: #7a89ff;
+    height: 166px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+    box-sizing: border-box;
+    gap: 10px;
+    text-align: left;
+}
+.iconealarme {
+    width: 109px;
+    position: relative;
+    height: 118px;
+    object-fit: cover;
+}
+.textoalarme {
+    width: 163px;
+    position: relative;
+    font-weight: 800;
+    display: inline-block;
+    height: 43px;
+    flex-shrink: 0;
+}
+.alerta {
+    width: 183.1px;
+    border-radius: 22px;
+    background-color: #7a89ff;
+    height: 189px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 14px 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.diaatual {
+    width: 110.9px;
+    position: relative;
+    font-weight: 800;
+    display: inline-block;
+    height: 95px;
+    flex-shrink: 0;
+}
+.mesatual {
+    width: 120.7px;
+    position: relative;
+    font-size: 24px;
+    font-weight: 800;
+    display: inline-block;
+    height: 37.5px;
+    flex-shrink: 0;
+}
+.data {
+    width: 195px;
+    border-radius: 22px;
+    background-color: #7a89ff;
+    height: 189px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 23px 32px;
+    box-sizing: border-box;
+    gap: 2px;
+    font-size: 64px;
+}
+.quadradossegundarios {
+    width: 277px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 55px;
+}
+.quadrado2 {
+    position: absolute;
+    top: 413px;
+    left: 13px;
+    width: 425px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 24px;
+}
+.phone {
+    width: 100%;
+    position: relative;
+    height: 2032px;
+    text-align: left;
+    font-size: 20px;
+    color: #fff;
+    font-family: 'Red Hat Display';
+}
+

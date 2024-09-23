@@ -1,117 +1,188 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-<link rel="stylesheet" href="style.css">
+    <title>SKY HOURS</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red Rose:wght@300;400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red Hat Display:wght@400&display=swap" />
 </head>
 <body>
-    
-    <div class="header">
-        <header>
-            <!-- H1 de separação:  -->
-            <h1>quadrado do header:</h1>
-
-            <h1>SKYHOURS</h1>
-            <h2 class="horario" id="horario">Horario:</h2>
-            <input class="pesquisa" id="pesquisa" type="search" name="query" placeholder="Pesquise a localização..." />
+        <header class="header">
+            <div class="logonome">
+                <img class="logo-icon" alt="Logo" src="img/Logo.png">
+                <div class="nomedosite">
+                    <span class="nomedosite-txt">
+                        <span>SKY</span>
+                        <span class="hours">HOURS</span>
+                    </span>
+                </div>
+            </div>
+            <div class="lupa-parent">
+                <img class="lupa-icon" alt="Lupa" src="img/Lupa.png">
+                <input class="pesquisa-child" id="pesquisa-child" type="search" name="query" placeholder="Pesquise a localização..." />      
+            </div>
         </header>
-    </div>
-    
-    <div class="quadradoPrincipal">
-        <!-- H1 de separação:  -->
-        <h1>quadrado Principal:</h1>
-        <h2 class="cidadeEscolhida" id="cidadeEscolhida"></h2>
-
-        <img class="simboloTempo" id="simboloTempo" src="" alt="simboloTempo">
-        <h3>Chuva:</h3>
-        <h3 class="chuva" id="chuva">Chuva: </h3>
-        <h3>Vento:</h3>
-        <h3 class="vento" id="vento">Vento: </h3>
-        <h3>Umidade:</h3>
-        <h3 class="Umidade" id="Umidade">Umidade: </h3>
-    </div>
-
-
-
-    <div class="quadradoCidades">
-                    <!-- H1 de separação:  -->
-                    <h1>quadrado Cidades:</h1>        
-        <h3 class="rio" id="rio">Rio: </h3>
-        <h3 class="sp" id="sp">Sp: </h3>
-        <h3 class="df" id="df">Santa: </h3>
-    </div>
-
-    <div class="quadradoAlerta">
-                    <!-- H1 de separação:  -->
-                    <h1>quadrado alerta:</h1>
-        <img class="alertarImg" id="alertarImg" src="" alt="alert">
-        <h3 class="alertaTexto" id="alertaTexto"> ta perigoso</h3>
-    </div>
-
-    <div class="quadradoDataAtual">
-        <!-- H1 de separação:  -->
-        <h1>quadrado Data:</h1>
-        <h2 class="diaAtual" id="diaAtual"></h2>
-        <h2 class="mesAtual" id="mesAtual"></h2>
-
-    </div>
-
-
-
-    <div class="tempPrincipal" id="tempPrincipal">
-            <!-- H1 de separação:  -->
-             <h1>Temperatura principa:</h1>
-
-        <h2 class="grausPrincipal" id="grausPrincipal">26°C</h2>
-        <img class="simboloTempoPrincipal" id="simboloTempoPrincipal" src="" alt="simboloTempo">
-        <h4 class="grausMaxima" id="grausMaxima">30°</h4>
-        <h4 class="grausMinima" id="grausMinima">20°</h4>
-        <h4 class="infoClima" id="infoClima">Parcialmente nublado</h4>
-        <h2 class="horario" id="horario">Horario:</h2>
-
-
-
-    </div>
-
-
-    <div class="previsão" id="previsão">
-                <!-- H1 de separação:  -->
-                <h1>Previsão das temp a depender do horario:</h1>   
-
-        <h3>9H</h3>
-        <h3 class="graus9H" id="graus9H"> </h3>
-        <img class="simboloTempo9H" id="simboloTempo9H" src="" alt="simboloTempo">
-        
-        <h3>12H</h3>
-        <h3 class="graus12H" id="graus12H"> </h3>
-        <img class="simboloTempo12H" id="simboloTempo12H" src="" alt="simboloTempo">
-        
-        <h3>15H</h3>
-        <h3 class="graus15H" id="graus15H"> </h3>
-        <img class="simboloTempo15H" id="simboloTempo15H" src="" alt="simboloTempo">
-        
-        <h3>18H</h3>
-        <h3 class="graus18H" id="graus18H"> </h3>
-        <img class="simboloTempo18H" id="simboloTempo18H" src="" alt="simboloTempo">
-
-
+      
         
 
-    </div>
 
-    <h1>switc de mudançã de C para F:</h1>
 
-    <div class="switch">
-        <!-- H1 de separação:  -->
-        <input type="checkbox" class="toggle" id="toggle" />
-        <label for="toggle"  class="slider">
-          <span class="label-celsius">°C</span>
-          <span class="label-fahrenheit">°F</span>
-        </label>
-      </div>
 
-<script src="script.js"></script>
+
+
+        <div class="retangulodomeio">
+    		<div class="quarado-principal">
+      			<div class="quadradonumeroum">
+        				<img class="funoquadradoprincipal-1-icon" alt="" src="img/FunoQuadradoPrincipal 1.png">
+        				
+        				<div class="nomedacidade" id="nomedacidade">
+          					<img class="iconeclimaprincipal" id="iconeclimaprincipal" alt="" src="img/IconeClimaPrincipal.png">
+          					
+          					<div class="titulocidade" id="titulocidade">Salvador, BA</div>
+          					<img class="iconelugar" alt="" src="img/IconePoint.png">
+          					
+        				</div>
+        				<div class="chuva">
+          					<div class="fundochuva">
+          					</div>
+          					<div class="chuva1">Chuva</div>
+          					<div class="mmh" id="mmh">10 mm/h</div>
+          					<img class="iconechuva" alt="" src="img/IconeChuva.png">
+          					
+        				</div>
+        				<div class="vento">
+          					<div class="fundochuva">
+          					</div>
+          					<div class="vento1">Vento</div>
+          					<div class="kmh" id="kmh">21 km/h</div>
+          					<img class="iconevento" alt="" src="img/IconeVento.png">
+          					
+        				</div>
+        				<div class="umidade">
+          					<div class="fundochuva">
+          					</div>
+          					<div class="umidade1">Umidade</div>
+          					<div class="porcentagemumidade" id="porcentagemumidade">64%</div>
+          					<img class="iconeumidade" alt="" src="img/IconeUmidade.png">
+          					
+        				</div>
+      			</div>
+    		</div>
+    		<div class="quadradossegundarios">
+      			<div class="grausmetropolis">
+        				<div class="sp">
+          					<div class="so-paulo">
+            						<p class="so-paulo1">São Paulo:             </p>
+          					</div>
+          					<img class="iconepoint" alt="" src="img/IconePoint.png">
+          					
+          					<div class="graussp" id="graussp">28.00°C</div>
+        				</div>
+        				<div class="df">
+          					<div class="braslia">Brasília:</div>
+          					<div class="grausdf" id="grausdf">28.00°C</div>
+          					<img class="iconepoint1" alt="" src="img/IconePoint.png">
+          					
+        				</div>
+        				<div class="rj">
+          					<div class="rio-de-janeiro">Rio De Janeiro:   </div>
+          					<div class="grausrj" id="grausrj">27.00°C</div>
+          					<img class="iconepoint2" alt="" src="img/IconePoint.png">
+          					
+        				</div>
+      			</div>
+      			<div class="alertadia">
+        				<div class="alerta">
+          					<img class="iconealarme" id="iconealarme" src="img/IconeAlarme.png">
+          					
+          					<div class="textoalarme" id="textoalarme">Baixa Umidade</div>
+        				</div>
+        				<div class="data">
+          					<div class="diaatual" id="diaatual">18</div>
+          					<div class="mesatual" id="mesatual">setembro</div>
+        				</div>
+      			</div>
+    		</div>
+    		<div class="climaprincipal">
+        		
+                        <div class="switch">
+                            <!-- H1 de separação:  -->
+                            <input type="checkbox" class="toggle" id="toggle" />
+                            <label for="toggle"  class="slider">
+                            <span class="label-celsius">°C</span>
+                            <span class="label-fahrenheit">°F</span>
+                            </label>
+                        </div>
+      			<div class="grauprincipal">
+        				<div class="temperaturaprincipal" id="temperaturaprincipal">26.00°C</div>
+        				<img class="iconeclimasegundario" id="iconeclimasegundario" src="img/IconeClimaSegundario.png">
+        				
+      			</div>
+      			<div class="temperaturamaxmin">
+        				<div class="max">
+          					<div class="temperaturamaxima" id="temperaturamaxima">28°</div>
+          					<img class="iconemax" alt="" src="img/IconeMax.png">
+          					
+        				</div>
+        				<div class="max">
+          					<b class="temperaturamin" id="temperaturamin">24°</b>
+          					<img class="iconemin" alt="" src="img/IconeMin.png">
+          					
+        				</div>
+      			</div>
+      			<div class="condicaoatual">
+        				<div class="condicaoatual1" id="condicaoatual1">Parcialmente nublado</div>
+      			</div>
+      			<div class="horarioatual">
+        				<div class="horarioatual1" id="horarioatual1">  10:16:00</div>
+      			</div>
+    		</div>
+  	</div>
+
+
+
+
+
+
+  	<div class="climahorarios">
+        <div class="horario1">
+              <div class="retangulo1">
+              </div>
+              <div class="horario11">
+                    <p class="h-am">09h AM</p>
+              </div>
+              <div class="graus1" id="graus1">27.00°C</div>
+              <img class="iconeclima1" id="iconeclima1" alt="" src="IconeClima1.png">
+              
+        </div>
+        <div class="horario1">
+              <div class="retangulo1">
+              </div>
+              <div class="horario11">12h PM</div>
+              <div class="graus2" id="graus2">27.00°C</div>
+              <img class="iconeclima2" id="iconeclima2" alt="" src="IconeClima2.png">
+              
+        </div>
+        <div class="horario1">
+              <div class="retangulo1">
+              </div>
+              <div class="horario11">03h PM</div>
+              <div class="graus3" id="graus3">27.00°C</div>
+              <img class="iconeclima3" id="iconeclima3" alt="" src="IconeClima3.png">
+              
+        </div>
+        <div class="horario1">
+              <div class="retangulo1">
+              </div>
+              <div class="horario11">06h PM</div>
+              <div class="graus4" id="graus4">27.00°C</div>
+              <img class="iconeclima4" id="iconeclima4" alt="" src="IconeClima4.png">
+              
+        </div>
+        </div>
+    <script src="script.js"></script>
 </body>
 </html>

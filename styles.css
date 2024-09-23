@@ -1,0 +1,919 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: normal;
+    background-color: #090229;
+
+}
+
+
+.pesquisa-child::placeholder {
+    color: #ffffff; /* Altere para a cor desejada */
+    opacity: 1;     /* Garante que a cor será totalmente aplicada */
+  }
+
+
+.pesquisa-child {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+    border: none; /* Remove a borda */
+    outline: none; /* Remove o contorno */
+    background-color: #685eff;
+    width: 430px;
+    height: 67px;
+}
+
+
+
+.switch {
+    position: relative;
+    width: 90px;
+    height: 35px;
+  }
+  
+  /* Hide the default checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* Slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #7A89FF; /* Default background color */
+    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.3s;
+  }
+  
+  /* Labels */
+  .label-celsius, .label-fahrenheit {
+    position: absolute;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    width: 37%;
+    transition: color 0.3s;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .label-celsius {
+    left: 0;
+  }
+  
+  .label-fahrenheit {
+    right: 0;
+  }
+  
+  /* Toggle circle */
+  .slider::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #090229;
+    top: 2.5px;
+    left: 2.5px;
+    transition: 0.3s;
+  }
+  
+  /* Checked state */
+  input:checked + .slider {
+    background-color: #ffffff; /* Background color when checked */
+  }
+  
+  input:checked + .slider::before {
+    transform: translateX(55px); /* Adjust to move the circle */
+  }
+  
+  input:checked + .slider .label-celsius {
+    color: #000000; /* Change label color when checked */
+  }
+  
+  input:checked + .slider .label-fahrenheit {
+    color: #7A89FF; /* Change label color when checked */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.header {
+    width: 100%;
+    background-color: #091325;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vw; /* Ajuste a margem conforme necessário */
+    color: #ececec;
+    font-family: 'Red Rose';
+    margin-bottom: 15px;
+}
+
+.logonome {
+    display: flex;
+    align-items: center;
+    gap: 1vw; /* Espaçamento proporcional */
+}
+
+.logo-icon {
+    width: 8vw; /* Largura proporcional */
+    height: auto; /* Mantém a proporção */
+}
+
+.nomedosite-txt {
+    line-break: anywhere;
+    font-size: 5.5vw; /* Tamanho de fonte proporcional */
+
+}
+
+.hours {
+    font-weight: 100;
+}
+
+.lupa-parent {
+    display: flex;
+    align-items: center;
+    background-color: #685eff;
+    border-radius: 18px;
+    padding: 0.3vw; /* Espaçamento proporcional */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+    font-size: 2vw;
+
+}
+
+.lupa-icon {
+    width: 2vw; /* Largura proporcional */
+    height: auto; /* Mantém a proporção */
+}
+
+.pesquise-a-localizacao {
+    width: 10vw; /* Largura proporcional */
+    border: none; /* Remove a borda padrão */
+    padding: 0.5vw; /* Espaçamento proporcional */
+    font-size: 0.5vw; /* Tamanho de fonte proporcional */
+    border-radius: 10px; /* Bordas arredondadas */
+}
+
+
+
+
+
+/* Final do Header */
+
+
+
+.funoquadradoprincipal-1-icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 48px;
+    width: 757px;
+    height: 449px;
+    object-fit: cover;
+}
+.iconeclimaprincipal {
+    position: absolute;
+    top: 0px;
+    left: 506px;
+    width: 221px;
+    height: 139px;
+    object-fit: cover;
+}
+.titulocidade {
+    position: absolute;
+    top: 39.67px;
+    left: 57px;
+    display: inline-block;
+    width: 449px;
+}
+.iconelugar {
+    position: absolute;
+    top: 33.67px;
+    left: 0px;
+    width: 56.5px;
+    height: 60.8px;
+    object-fit: cover;
+}
+.nomedacidade {
+    position: absolute;
+    top: 34.7px;
+    left: 24.83px;
+    width: 727px;
+    height: 139px;
+    font-size: 36px;
+}
+.fundochuva {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 22px;
+    background-color: rgba(122, 137, 255, 0.73);
+    width: 232.6px;
+    height: 99.3px;
+}
+.chuva1 {
+    position: absolute;
+    top: 11.69px;
+    left: 88.05px;
+    font-weight: 500;
+    display: inline-block;
+    width: 66.3px;
+    height: 30.4px;
+}
+.mmh {
+    position: absolute;
+    top: 31px;
+    left: 64.36px;
+    font-size: 32px;
+    font-weight: 300;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 134px;
+    height: 54px;
+}
+.iconechuva {
+    position: absolute;
+    top: 18.7px;
+    left: 26.09px;
+    width: 42.4px;
+    height: 60.8px;
+    object-fit: cover;
+}
+.chuva {
+    position: absolute;
+    top: 343.21px;
+    left: 31.39px;
+    width: 232.6px;
+    height: 99.3px;
+}
+.vento1 {
+    position: absolute;
+    top: 11.69px;
+    left: 98.92px;
+    font-weight: 500;
+    display: inline-block;
+    width: 75px;
+    height: 33.9px;
+}
+.kmh {
+    position: absolute;
+    top: 4.67px;
+    left: 85.88px;
+    font-size: 32px;
+    font-weight: 300;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 135.9px;
+    height: 101.7px;
+}
+.iconevento {
+    position: absolute;
+    top: 11.69px;
+    left: 4.35px;
+    width: 81.5px;
+    height: 76px;
+    object-fit: cover;
+}
+.vento {
+    position: absolute;
+    top: 339.7px;
+    left: 272.02px;
+    width: 232.6px;
+    height: 106.3px;
+}
+.umidade1 {
+    position: absolute;
+    top: 11.69px;
+    left: 79.35px;
+    font-weight: 500;
+    display: inline-block;
+    width: 96.7px;
+    height: 30.4px;
+}
+.porcentagemumidade {
+    position: absolute;
+    top: 29.21px;
+    left: 66.31px;
+    font-size: 32px;
+    font-weight: 300;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 81.5px;
+    height: 53.8px;
+}
+.iconeumidade {
+    position: absolute;
+    top: 9.35px;
+    left: 8.7px;
+    width: 64.1px;
+    height: 81.8px;
+    object-fit: cover;
+}
+.umidade {
+    position: absolute;
+    top: 343.21px;
+    left: 512.64px;
+    width: 232.6px;
+    height: 99.3px;
+}
+.quadradonumeroum {
+    width: 757px;
+    position: relative;
+    height: 449px;
+}
+.quarado-principal {
+    width: 761px;
+    border-radius: 23px;
+    height: 450px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    padding: 14px 1px;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+.so-paulo1 {
+    margin: 0;
+    white-space: pre-wrap;
+}
+.so-paulo {
+    position: absolute;
+    top: 6px;
+    left: 35.93px;
+    display: inline-block;
+    width: 114px;
+    height: 44px;
+}
+.iconepoint {
+    position: absolute;
+    top: 6.46px;
+    left: 0px;
+    width: 36.2px;
+    height: 34.2px;
+    object-fit: cover;
+}
+.graussp {
+    position: absolute;
+    top: 0px;
+    left: 226.93px;
+    display: inline-block;
+    width: 104px;
+    height: 44px;
+}
+.sp {
+    width: 330.9px;
+    position: absolute;
+    margin: 0 !important;
+    top: 62px;
+    left: 33.28px;
+    height: 50px;
+    z-index: 0;
+}
+.braslia {
+    position: absolute;
+    top: 6px;
+    left: 35.93px;
+    display: inline-block;
+    width: 84px;
+    height: 43px;
+}
+.grausdf {
+    position: absolute;
+    top: 0px;
+    left: 226.93px;
+}
+.iconepoint1 {
+    position: absolute;
+    top: 5.65px;
+    left: 0px;
+    width: 36.2px;
+    height: 34.2px;
+    object-fit: cover;
+}
+.df {
+    width: 317.9px;
+    position: absolute;
+    margin: 0 !important;
+    top: 112px;
+    left: 33.28px;
+    height: 49px;
+    z-index: 1;
+}
+.rio-de-janeiro {
+    position: absolute;
+    top: 0.24px;
+    left: 35.93px;
+    white-space: pre-wrap;
+    display: inline-block;
+    width: 170px;
+    height: 44px;
+}
+.grausrj {
+    position: absolute;
+    top: 3.24px;
+    left: 226.93px;
+    display: inline-block;
+    width: 141px;
+    height: 35px;
+}
+.iconepoint2 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 36.2px;
+    height: 34.2px;
+    object-fit: cover;
+}
+.rj {
+    width: 367.9px;
+    position: absolute;
+    margin: 0 !important;
+    top: 12.76px;
+    left: 33.28px;
+    height: 44.2px;
+    z-index: 2;
+}
+.grausmetropolis {
+    width: 412.6px;
+    border-radius: 22px;
+    background-color: #7a89ff;
+    height: 185px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+    gap: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.iconealarme {
+    width: 109px;
+    position: relative;
+    height: 118px;
+    object-fit: cover;
+}
+.textoalarme {
+    width: 163px;
+    position: relative;
+    font-weight: 800;
+    display: inline-block;
+    height: 43px;
+    flex-shrink: 0;
+}
+.alerta {
+    width: 183.1px;
+    border-radius: 22px;
+    background-color: #7a89ff;
+    height: 189px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 14px 10px;
+    box-sizing: border-box;
+}
+.diaatual {
+    width: 110.9px;
+    position: relative;
+    font-weight: 800;
+    display: inline-block;
+    height: 95px;
+    flex-shrink: 0;
+}
+.mesatual {
+    width: 120.7px;
+    position: relative;
+    font-size: 24px;
+    font-weight: 800;
+    display: inline-block;
+    height: 37.5px;
+    flex-shrink: 0;
+}
+.data {
+    width: 195px;
+    border-radius: 22px;
+    background-color: #7a89ff;
+    height: 189px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 23px 32px;
+    box-sizing: border-box;
+    gap: 2px;
+    font-size: 64px;
+}
+.alertadia {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 31px;
+    text-align: center;
+    font-size: 16px;
+}
+.quadradossegundarios {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 74px;
+    font-size: 24px;
+}
+
+
+
+
+.celtofar-child {
+    width: 53px;
+    position: absolute;
+    margin: 0 !important;
+    top: 3.95px;
+    left: 7px;
+    border-radius: 50%;
+    background-color: #fff;
+    height: 48px;
+    z-index: 0;
+}
+.f {
+    width: 22.6px;
+    position: absolute;
+    margin: 0 !important;
+    top: 16.95px;
+    left: 207px;
+    font-weight: 800;
+    display: inline-block;
+    height: 21.1px;
+    z-index: 1;
+}
+.c {
+    width: 22.6px;
+    position: absolute;
+    margin: 0 !important;
+    top: 16.95px;
+    left: 17px;
+    font-weight: 800;
+    color: #7a89ff;
+    display: inline-block;
+    height: 21.1px;
+    z-index: 2;
+}
+.celtofar {
+    width: 247px;
+    box-shadow: 3px -4px 4px rgba(0, 0, 0, 0.25) inset;
+    border-radius: 22px;
+    background-color: #7a89ff;
+    height: 59px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4px 7px;
+    box-sizing: border-box;
+    position: relative;
+    gap: 77px;
+    font-size: 20px;
+}
+.temperaturaprincipal {
+    width: 502px;
+    position: relative;
+    display: inline-block;
+    height: 178px;
+    flex-shrink: 0;
+}
+.iconeclimasegundario {
+    width: 111px;
+    position: relative;
+    height: 111px;
+    object-fit: cover;
+    margin-left: -129px;
+}
+.grauprincipal {
+    width: 503px;
+    height: 142px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 100px;
+}
+.temperaturamaxima {
+    width: 136px;
+    position: relative;
+    font-weight: 800;
+    display: inline-block;
+    height: 48px;
+    flex-shrink: 0;
+}
+.iconemax {
+    width: 19.8px;
+    position: relative;
+    height: 27.4px;
+}
+.max {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.iconemin {
+    width: 19.8px;
+    position: relative;
+    height: 28px;
+    margin-left: 10px;
+
+}
+.temperaturamaxmin {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    text-align: left;
+    font-size: 32px;
+    color: #fff;
+    font-family: 'Red Hat Display';
+}
+
+
+.condicaoatual1 {
+    width: 367px;
+    position: relative;
+    display: inline-block;
+    height: 84px;
+    flex-shrink: 0;
+}
+.condicaoatual {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 19px 0px 0px;
+    text-align: center;
+}
+.horarioatual1 {
+    flex: 1;
+    position: relative;
+    font-weight: 800;
+    white-space: pre-wrap;
+    display: inline-block;
+    height: 39px;
+}
+.horarioatual {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 40px;
+}
+.climaprincipal {
+    width: 503px;
+    height: 451px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+.retangulodomeio {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-align: left;
+    font-size: 20px;
+    color: #fff;
+    font-family: 'Red Hat Display';
+}
+
+
+/*Final do Retangulo Principal*/
+
+
+.retangulo1 {
+    align-self: stretch;
+    position: relative;
+    box-shadow: 8px 4px 4px rgba(0, 0, 0, 0.25) inset, 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 54px;
+    background-color: rgba(58, 52, 158, 0.52);
+    height: 126.7px;
+    z-index: 0;
+}
+.h-am {
+    margin: 0;
+}
+.horario11 {
+    align-self: stretch;
+    position: relative;
+    font-weight: 300;
+    display: inline-block;
+    height: 29.3px;
+    flex-shrink: 0;
+    z-index: 1;
+}
+.graus1 {
+    width: 139px;
+    position: absolute;
+    margin: 0 !important;
+    top: 48.89px;
+    left: 147.81px;
+    font-size: 32px;
+    font-weight: 800;
+    display: inline-block;
+    height: 53px;
+    flex-shrink: 0;
+    z-index: 2;
+}
+.graus2 {
+    width: 139px;
+    position: absolute;
+    margin: 0 !important;
+    top: 48.89px;
+    left: 147.81px;
+    font-size: 32px;
+    font-weight: 800;
+    display: inline-block;
+    height: 53px;
+    flex-shrink: 0;
+    z-index: 2;
+}.graus3 {
+    width: 139px;
+    position: absolute;
+    margin: 0 !important;
+    top: 48.89px;
+    left: 147.81px;
+    font-size: 32px;
+    font-weight: 800;
+    display: inline-block;
+    height: 53px;
+    flex-shrink: 0;
+    z-index: 2;
+}.graus4 {
+    width: 139px;
+    position: absolute;
+    margin: 0 !important;
+    top: 48.89px;
+    left: 147.81px;
+    font-size: 32px;
+    font-weight: 800;
+    display: inline-block;
+    height: 53px;
+    flex-shrink: 0;
+    z-index: 2;
+}
+.iconeclima1 {
+    width: 118px;
+    position: absolute;
+    margin: 0 !important;
+    top: 11.89px;
+    left: 29.81px;
+    height: 102px;
+    object-fit: cover;
+    z-index: 3;
+}
+
+.iconeclima2 {
+    width: 118px;
+    position: absolute;
+    margin: 0 !important;
+    top: 11.89px;
+    left: 29.81px;
+    height: 102px;
+    object-fit: cover;
+    z-index: 3;
+}
+.iconeclima3 {
+    width: 118px;
+    position: absolute;
+    margin: 0 !important;
+    top: 11.89px;
+    left: 29.81px;
+    height: 102px;
+    object-fit: cover;
+    z-index: 3;
+}
+.iconeclima4 {
+    width: 118px;
+    position: absolute;
+    margin: 0 !important;
+    top: 11.89px;
+    left: 29.81px;
+    height: 102px;
+    object-fit: cover;
+    z-index: 3;
+}
+.horario1 {
+    width: 329.1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    gap: 6px;
+}
+.climahorarios {
+    padding-top: 20px;
+    width: 100%;
+    position: relative;
+    height: 170.2px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    font-family: 'Red Hat Display';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* entre 1024-450 ipad  450-pra baixo celular*/ 
+
+
+/* Responsividade para telas menores */
+@media (max-width: 500px) {
+    
+  
+  
+}

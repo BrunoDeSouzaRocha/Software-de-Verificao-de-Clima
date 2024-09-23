@@ -1,43 +1,46 @@
+
+
+
 let apiKey = "b67ce459b64ffeed00b9123a00175cbe";
 
 
-const pesquisa= document.querySelector("#pesquisa");
-const horario = document.querySelectorAll('#horario');
+const pesquisa= document.querySelector("#pesquisa-child");
+const horario = document.querySelectorAll('#horarioatual1');
 
-const simboloTempo= document.querySelector("#simboloTempo");
-const cidadeEscolhida= document.querySelector("#cidadeEscolhida");
-const chuva= document.querySelector("#chuva");
-const vento= document.querySelector("#vento");
-const Umidade= document.querySelector("#Umidade");
+const simboloTempo= document.querySelector("#iconeclimaprincipal");
+const cidadeEscolhida= document.querySelector("#titulocidade");
+const chuva= document.querySelector("#mmh");
+const vento= document.querySelector("#kmh");
+const Umidade= document.querySelector("#porcentagemumidade");
 
-const rio= document.querySelector("#rio");
-const sp= document.querySelector("#sp");
-const df= document.querySelector("#df");
+const rio= document.querySelector("#grausrj");
+const sp= document.querySelector("#graussp");
+const df= document.querySelector("#grausdf");
 
-const alertarImg= document.querySelector("#alertarImg");
-const alertaTexto= document.querySelector("#alertaTexto");
+const alertarImg= document.querySelector("#iconealarme");
+const alertaTexto= document.querySelector("#textoalarme");
 
-const diaAtual= document.querySelector("#diaAtual");
-const mesAtual= document.querySelector("#mesAtual");
+const diaAtual= document.querySelector("#diaatual");
+const mesAtual= document.querySelector("#mesatual");
 
 
-const simboloTempoPrincipal= document.querySelector("#simboloTempoPrincipal");
-const grausPrincipal= document.querySelector("#grausPrincipal");
-const grausMaxima= document.querySelector("#grausMaxima");
-const grausMinima= document.querySelector("#grausMinima");
-const infoClima= document.querySelector("#infoClima");
+const simboloTempoPrincipal= document.querySelector("#iconeclimasegundario");
+const grausPrincipal= document.querySelector("#temperaturaprincipal");
+const grausMaxima= document.querySelector("#temperaturamaxima");
+const grausMinima= document.querySelector("#temperaturamin");
+const infoClima= document.querySelector("#condicaoatual1");
 
-const graus9H= document.querySelector("#graus9H");
-const simboloTempo9H= document.querySelector("#simboloTempo9H");
+const graus9H= document.querySelector("#graus1");
+const simboloTempo9H= document.querySelector("#iconeclima1");
 
-const graus12H= document.querySelector("#graus12H");
-const simboloTempo12H= document.querySelector("#simboloTempo12H");
+const graus12H= document.querySelector("#graus2");
+const simboloTempo12H= document.querySelector("#iconeclima2");
 
-const graus15H= document.querySelector("#graus15H");
-const simboloTempo15H= document.querySelector("#simboloTempo15H");
+const graus15H= document.querySelector("#graus3");
+const simboloTempo15H= document.querySelector("#iconeclima3");
 
-const graus18H= document.querySelector("#graus18H");
-const simboloTempo18H= document.querySelector("#simboloTempo18H");
+const graus18H= document.querySelector("#graus4");
+const simboloTempo18H= document.querySelector("#iconeclima4");
 
 let city = localStorage.getItem('city')
 let modoTemperatura =localStorage.getItem('modoTemperatura')
@@ -54,6 +57,7 @@ const dataMes = dataExata.toLocaleDateString('pt-BR', {
 
 diaAtual.innerText = dataDia  ;
 mesAtual.innerText =  dataMes ;
+console.log("asda");
 
 
 
@@ -68,7 +72,7 @@ function mostrarHorarioAtual() {
   const segundos = agora.getSeconds();
   //caso tenha mais de algum h1... com o msm id tem q usar o forEach
   horario.forEach(horario => {
-    horario.innerText = `Horário: ${horas}:${minutos}:${segundos}`;
+    horario.innerText = ` ${horas}:${minutos}:${segundos}`;
   })
 }
 //faz com q o tempo sempre atualize 
@@ -136,15 +140,14 @@ const AlterarTempo = async (city,temperatura) => {
   const precipitação = data.rain ? data.rain['24h'] : 0;
 
 
-  cidadeEscolhida.innerText =( `Nome Da Cidade: ${data.name}`);
+  cidadeEscolhida.innerText =( data.name);
   simboloTempo.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-  chuva.innerText =  `${precipitação} mm/h` ;
+  chuva.innerText =  `${precipitação} mm` ;
   vento.innerText = `${data.wind.speed}m/s`;
   Umidade.innerText = `${data.main.humidity}%`;
-  cidadeEscolhida.innerText =( `Nome Da Cidade: ${data.name}`);
   
   grausPrincipal.innerText = `${data.main.temp+temperatura}`;
-  simboloTempoPrincipal.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+  simboloTempoPrincipal.src= `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
   grausMaxima.innerText = `${data.main.temp_max+temperatura}`;
   grausMinima.innerText = `${data.main.temp_min+temperatura}`;
   infoClima.innerText = `${data.weather[0].description}`;
@@ -155,23 +158,23 @@ if (modoTemperatura=="true"){
     if (temperaturaReal>32) {
       console.log('bbbbb');
 
-      alertarImg.src='/img/alerta.png'
+      alertarImg.src='img/IconeAlarme.png'
       alertaTexto.innerText="Ta quente pra caralho"
     }else{
       console.log('aaaa');
       
-        alertarImg.src='./img/agradavel.png'
+        alertarImg.src='img/Sun.png'
       alertaTexto.innerText="Temperatura ta de boa"
     }
 }else{
   if (temperaturaReal>92) {
     console.log('bbbbb');
-    alertarImg.src="/img/alerta.png"
+    alertarImg.src='img/IconeAlarme.png'
     alertaTexto.innerText="Ta quente pra caralho"
   }else{
     console.log('aaaa');
     
-      alertarImg.src='./img/agradavel.png'
+    alertarImg.src='img/Sun.png'
     alertaTexto.innerText="Temperatura ta de boa"
   }
 
@@ -198,16 +201,16 @@ forecastTimes.forEach(hour => {
 
     if (forecast) {
         if (hour === 9) {
-            graus9H.innerText = `Previsão para 9h: ${forecast.main.temp+temperatura}`;
+            graus9H.innerText = forecast.main.temp+temperatura;
             simboloTempo9H.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
         } else if (hour === 12) {
-            graus12H.innerText = `Previsão para 12h: ${forecast.main.temp+temperatura}`;
+            graus12H.innerText = `${forecast.main.temp+temperatura}`;
             simboloTempo12H.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
         } else if (hour === 15) {
-            graus15H.innerText = `Previsão para 15h: ${forecast.main.temp+temperatura}`;
+            graus15H.innerText = `${forecast.main.temp+temperatura}`;
             simboloTempo15H.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
         } else if (hour === 18) {
-            graus18H.innerText = `Previsão para 18h: ${forecast.main.temp+temperatura}`;
+            graus18H.innerText = ` ${forecast.main.temp+temperatura}`;
             simboloTempo18H.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
         }
     }
@@ -221,9 +224,9 @@ const AlterarTempoMetropolis = async(temperatura)=>{
   const dataRio = await pegarTempo("Rio de Janeiro");
   const dataSp = await pegarTempo("São Paulo");
   const dataDf = await pegarTempo("Brasília");
-rio.innerText =`Rio De Janeiro: ${dataRio.main.temp+temperatura}`;
-sp.innerText =`São Paulo: ${dataSp.main.temp+temperatura}`;
-df.innerText =`Brasília: ${dataDf.main.temp+temperatura}`;
+rio.innerText =dataRio.main.temp+temperatura;
+sp.innerText =dataSp.main.temp+temperatura;
+df.innerText =dataDf.main.temp+temperatura;
 }
 
 
@@ -242,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
+  AlterarTempo('salvador, br','°C')
 
 
 
@@ -299,3 +302,35 @@ pesquisa.addEventListener("keyup", (e) => {
     }
   }
 });
+
+
+
+ function responsivo() {
+  let larguraTela = window.innerWidth;
+  console.log('aaa');
+  
+  if (larguraTela < 465) {
+    // Redirecionar para a página para telas menores que 600px
+    
+    if (window.location.pathname== '/phone.html') {
+      
+    }else{
+      window.location.href = "/phone.html";
+    }
+    
+} else {
+    if (window.location.pathname == '/index.html') {
+        console.log("Ta Dizendo q ta certo");
+        
+    }else{
+      window.location.href = "/index.html";
+    }
+
+}  
+}
+
+
+window.addEventListener('resize',responsivo );
+window.addEventListener('DOMContentLoaded',responsivo );
+window.addEventListener('load',responsivo );
+window.addEventListener('orientationchange',responsivo );
