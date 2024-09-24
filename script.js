@@ -1,9 +1,6 @@
+let apiKey = "b67ce459b64ffeed00b9123a00175cbe"
 
-
-
-let apiKey = "b67ce459b64ffeed00b9123a00175cbe";
-
-
+//Tudo isso aqui q ta igual pega o id das div do html
 const pesquisa= document.querySelector("#pesquisa-child");
 const horario = document.querySelector('#horarioatual1');
 
@@ -42,11 +39,14 @@ const simboloTempo15H= document.querySelector("#iconeclima3");
 const graus18H= document.querySelector("#graus4");
 const simboloTempo18H= document.querySelector("#iconeclima4");
 
+const toggle = document.querySelector('#toggle');
+
+
 let city = localStorage.getItem('city')
 let modoTemperatura =localStorage.getItem('modoTemperatura')
 
 
-
+//Isso aqui ta pegando a data atual e exibindo 
 const dataExata = new Date();
 const dataDia = dataExata.toLocaleDateString('pt-BR', {
   day: '2-digit',
@@ -72,18 +72,18 @@ function mostrarHorarioAtual() {
   //caso tenha mais de algum h1... com o msm id tem q usar o forEach
     horario.innerText = ` ${horas}:${minutos}:${segundos}`;
 }
-//faz com q o tempo sempre atualize 
+//faz com q o tempo sempre atualize, pq o site é estatico estão essa fução sempre fica sendo atualizada
 setInterval(mostrarHorarioAtual, 1000);
 
 
 
+//para caso alguem digite um lugar q nao existe
 const exibirErro = () => {
   alert("Esse Lugar nao existe");
 };
 
 
-
-//melhor do resto
+//Essa função ta fazendo uma requisição e transformando em um json para o js conseguir ler, e tbm passa em C° ou em F°
 const pegarTempo = async (city) => {
   modoTemperatura=localStorage.getItem('modoTemperatura')
   let apiWeatherURL
@@ -92,14 +92,14 @@ const pegarTempo = async (city) => {
   }else{
     apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}&lang=pt_br`;
   }
-  //tranforma o json em algo para o js ler
+//o fetch faz uma requisião http para o urlForecast
   const res = await fetch(apiWeatherURL);
   const data = await res.json();
   return data;
 };
 
 
-//Melhor para pegar de Horario
+//Faz a msm coisa da fumção de cima so q ela é responsavel por pegar qualquer coisa relacionada a  previsões
 const pegarTempoFuturo = async(city)=>{
   modoTemperatura=localStorage.getItem('modoTemperatura')
   let urlForecast
@@ -108,6 +108,7 @@ const pegarTempoFuturo = async(city)=>{
   }else{
     urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial&lang=pt_br`;
   }
+
 //o fetch faz uma requisião http para o urlForecast
   const responseForecast = await fetch(urlForecast);
   const forecastData = await responseForecast.json();
@@ -118,9 +119,11 @@ const pegarTempoFuturo = async(city)=>{
 
 
 
-
+//A função responsavel por atualizar os dados de temperatura de acordo com a cidade escolhida 
 const AlterarTempo = async (city,temperatura) => {
+
   modoTemperatura=localStorage.getItem('modoTemperatura')
+
   const data = await pegarTempo(city);
   const forecastData = await pegarTempoFuturo(city)
 
@@ -129,9 +132,10 @@ const AlterarTempo = async (city,temperatura) => {
     return;
   }
 
+  
   cidadeEscolhida.innerText =( data.name);
 
-  if (window.location.pathname == '/index.html') {
+  if (window.location.pathname == '/index.html' || window.location.pathname == '/tablet.html' ) {
     simboloTempo.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
   }
   vento.innerText = `${data.wind.speed}m/s`;
@@ -143,105 +147,73 @@ const AlterarTempo = async (city,temperatura) => {
   grausMinima.innerText = `${data.main.temp_min+temperatura}`;
   infoClima.innerText = `${data.weather[0].description}`;
 
-let temperaturaReal= data.main.temp
+  let temperaturaReal= data.main.temp
 
-if (modoTemperatura=="true"){ 
-    if (temperaturaReal>32) {
+  if (modoTemperatura=="true"){ 
+      if (temperaturaReal>35) {
 
+        alertarImg.src='img/IconeAlarme.png'
+        alertaTexto.innerText="calor extremo"
+      }else{
+        
+          alertarImg.src='img/Sun.png'
+        alertaTexto.innerText="Temperatura ta de boa"
+      }
+  }else{
+    if (temperaturaReal>95) {
       alertarImg.src='img/IconeAlarme.png'
-      alertaTexto.innerText="Ta quente pra caralho"
+      alertaTexto.innerText="calor extremo"
     }else{
       
-        alertarImg.src='img/Sun.png'
+      alertarImg.src='img/Sun.png'
       alertaTexto.innerText="Temperatura ta de boa"
     }
-}else{
-  if (temperaturaReal>92) {
-    alertarImg.src='img/IconeAlarme.png'
-    alertaTexto.innerText="Ta quente pra caralho"
-  }else{
-    
-    alertarImg.src='img/Sun.png'
-    alertaTexto.innerText="Temperatura ta de boa"
+
   }
 
-}
 
 
-/*O método find() percorre o array do primeiro ao último elemento.
-Para cada elemento, ele executa a função de teste (callback).
-Assim que a função de teste retornar true, o find() para e retorna esse elemento.
-Se nenhum elemento passar no teste, o find() retorna undefined.
 
-Estamos usando o find() para procurar a primeira previsão (dentro de forecastData.list) que tenha uma hora específica (9h, 12h, 15h ou 18h).
-A função de teste converte o timestamp item.dt para uma data legível usando new Date(item.dt * 1000), e então verifica se a hora (getHours()) é igual à hora que estamos procurando.
-Se encontrar uma previsão com essa hora, o find() retorna esse elemento, permitindo que a previsão seja exibida.*/
+  //forecastTimes: Um array com os horários específicos (9h, 12h, 15h e 18h) para os quais a previsão será exibida.
+  const forecastTimes = [horasDeAgr,9, 12, 15, 18];
 
+  //forEach faz com que percorra todos os elementos do arrew 
+  forecastTimes.forEach(hour => {
+      //forecastData.list contém a lista de previsões de tempo
+      //Find o compara o numero q ta saindo do retunr e procura para ver se tem na ForecastData
+      //item vai ser um objeto do arrew de forecastData q é da api aonde em forecastData tem todas as previsões de 3 em 3 horas
+      //.dt é aonde ta a previsão dentro do objeto item
+      //em .dt tem informações em segundos tendo que multiplicador por 1000 para ter as informações em milissegundos
+      const forecast = forecastData.list.find(item => {
+          const forecastDate = new Date(item.dt * 1000);
+          return forecastDate.getHours() === hour;});
 
-//Isso aqui é para pegar as horas e fazer com que a preciptação seja no horario q pessao esteja vendo
-let agora = new Date();
-let horasDeAgr = agora.getHours();
-
-
-function AcharHorario(HoraAtual) {
-  if (HoraAtual % 3 == 0) {
-
-    return HoraAtual
-    
-  }else{
-    while (HoraAtual % 3 !== 0) {
-
-      HoraAtual++
-
-      if (HoraAtual % 3 == 0) {
-        return HoraAtual
-      }
-    }
-  }
- 
-}
-
-horasDeAgr = AcharHorario(horasDeAgr)
-
-
-//forecastTimes: Um array com os horários específicos (9h, 12h, 15h e 18h) para os quais a previsão será exibida.
-const forecastTimes = [horasDeAgr,9, 12, 15, 18];
-
-//forEach faz com que percorra todos os elementos do arrew 
-forecastTimes.forEach(hour => {
-    //forecastData.list contém a lista de previsões de tempo
-    //Findo compara o numero q ta saindo do retunr e procura para ver se tem na ForecastData
-    const forecast = forecastData.list.find(item => {
-        const forecastDate = new Date(item.dt * 1000);
-        return forecastDate.getHours() === hour;
-    });
-
-      //Isso aqui é para pegar as horas e fazer com que a preciptação seja no horario q pessao esteja vendo
-      let agora = new Date();
-      let horas = agora.getHours();
-      console.log(horas+hour);
+           
+      horasDeAgr = AcharHorario(horasDeAgr)
       
-    if (forecast) {
-        if (hour==horas) {
-          chuva.innerText=`${forecast.pop * 100}%`          
-        }
-        if (hour === 9) {
-            graus9H.innerText = forecast.main.temp+temperatura;
-            simboloTempo9H.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
-        } else if (hour === 12) {
-            graus12H.innerText = `${forecast.main.temp+temperatura}`;
-            simboloTempo12H.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
-        } else if (hour === 15) {
-            graus15H.innerText = `${forecast.main.temp+temperatura}`;
-            simboloTempo15H.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
-        } else if (hour === 18) {
-            graus18H.innerText = ` ${forecast.main.temp+temperatura}`;
-            simboloTempo18H.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
-        }
-    }
-});
+        
+        if (forecast) {
+          if (hour==horasDeAgr) {          
+            chuva.innerText=`${forecast.pop * 100}%`          
+          }
+          if (hour === 9) {
+              graus9H.innerText = forecast.main.temp+temperatura;
+              simboloTempo9H.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+          } else if (hour === 12) {
+              graus12H.innerText = `${forecast.main.temp+temperatura}`;
+              simboloTempo12H.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+          } else if (hour === 15) {
+              graus15H.innerText = `${forecast.main.temp+temperatura}`;
+              simboloTempo15H.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+          } else if (hour === 18) {
+              graus18H.innerText = ` ${forecast.main.temp+temperatura}`;
+              simboloTempo18H.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+          }
+      }
 
-};
+  });
+
+};//FInal da função principal
 
 
 
@@ -249,35 +221,20 @@ const AlterarTempoMetropolis = async(temperatura)=>{
   const dataRio = await pegarTempo("Rio de Janeiro");
   const dataSp = await pegarTempo("São Paulo");
   const dataDf = await pegarTempo("Brasília");
-rio.innerText =dataRio.main.temp+temperatura;
-sp.innerText =dataSp.main.temp+temperatura;
-df.innerText =dataDf.main.temp+temperatura;
+  rio.innerText =dataRio.main.temp+temperatura;
+  sp.innerText =dataSp.main.temp+temperatura;
+  df.innerText =dataDf.main.temp+temperatura;
 }
 
 
 
 
 
-
-
-
-//js do switch 
 //Ese DomContent Acontece sempre q a pagina é inciada
 document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
-
-  AlterarTempo('salvador, br','°C')
-
-
-
-
-
-
-  const toggle = document.querySelector('#toggle');
 
   // Verifica o estado inicial do checkbox ao carregar a página
   if (toggle.checked) {
@@ -293,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
   //Faz com que altere caso a pessoa clique para mudar
   toggle.addEventListener('change', function() {
     city=localStorage.getItem('city')
-
+    
     if (this.checked) {
       localStorage.setItem('modoTemperatura',false)
       AlterarTempoMetropolis('°F')
@@ -306,12 +263,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
   });
+  
+  //Sempre que troca de resolução reseta o dia escolhido, entao isso faz assegurar q nao vai ser trocado e tbm faz com que caso nao tenha nenhum pais escolhido o primeiro seja salvador
+  if (localStorage.getItem('city')==null) {
+    AlterarTempo('salvador,br', '°C')
+  }else{
+    city=localStorage.getItem('city')
+    if (modoTemperatura=='true'){
+      AlterarTempo(city,"°C");
+    }else{
+      AlterarTempo(city,"°F");
 
+    }
+  }
 
 });
 
 pesquisa.addEventListener("keyup", (e) => {
   if (e.code === "Enter") {
+
     modoTemperatura=localStorage.getItem('modoTemperatura')
     localStorage.setItem('city', e.target.value)
     city=localStorage.getItem('city')
@@ -326,11 +296,33 @@ pesquisa.addEventListener("keyup", (e) => {
 
 
 
+let agora = new Date();
+let horasDeAgr = agora.getHours();
+
+//Função para pegar a precitação de chuva pelas proximas no max 3H
+function AcharHorario(HoraAtual) {
+  if (HoraAtual % 3 == 0) {
+
+    return HoraAtual
+    
+  }else{
+    while (HoraAtual % 3 !== 0) {
+
+      HoraAtual++
+
+      if (HoraAtual % 3 == 0) {
+        return HoraAtual
+      }
+    }
+  }
+
+}
+
+//Essa função faz com que troque de Pagina dependendo da resolução da pagina e é chamada sempre q a resolução muda
  function responsivo() {
   let larguraTela = window.innerWidth;
   
-  if (larguraTela < 465) {
-    // Redirecionar para a página para telas menores que 600px
+  if (larguraTela < 465 ) {
 
     if (window.location.pathname== '/phone.html') {
 
@@ -338,24 +330,28 @@ pesquisa.addEventListener("keyup", (e) => {
       
       window.location.href = "/phone.html";
     }
-    
-} else {
+
+  }else if(larguraTela < 892 ){
+    if (window.location.pathname == '/tablet.html') {
+
+    }else{
+
+      window.location.href = "/tablet.html";
+    }
+
+  }else {
     if (window.location.pathname == '/index.html') {
 
     }else{
-      console.log('isso aqui ta funcionando?');
 
       window.location.href = "/index.html";
 
     }
 
-}  
+  }
+
 }
 
 
-
-window.addEventListener('resize',responsivo );
-
 window.addEventListener('DOMContentLoaded',responsivo );
-window.addEventListener('load',responsivo );
-window.addEventListener('orientationchange',responsivo );
+window.addEventListener('resize',responsivo );
