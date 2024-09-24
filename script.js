@@ -5,7 +5,7 @@ let apiKey = "b67ce459b64ffeed00b9123a00175cbe";
 
 
 const pesquisa= document.querySelector("#pesquisa-child");
-const horario = document.querySelectorAll('#horarioatual1');
+const horario = document.querySelector('#horarioatual1');
 
 const simboloTempo= document.querySelector("#iconeclimaprincipal");
 const cidadeEscolhida= document.querySelector("#titulocidade");
@@ -57,7 +57,6 @@ const dataMes = dataExata.toLocaleDateString('pt-BR', {
 
 diaAtual.innerText = dataDia  ;
 mesAtual.innerText =  dataMes ;
-console.log("asda");
 
 
 
@@ -71,9 +70,7 @@ function mostrarHorarioAtual() {
   const minutos = agora.getMinutes();
   const segundos = agora.getSeconds();
   //caso tenha mais de algum h1... com o msm id tem q usar o forEach
-  horario.forEach(horario => {
     horario.innerText = ` ${horas}:${minutos}:${segundos}`;
-  })
 }
 //faz com q o tempo sempre atualize 
 setInterval(mostrarHorarioAtual, 1000);
@@ -86,9 +83,8 @@ const exibirErro = () => {
 
 
 
-
+//melhor do resto
 const pegarTempo = async (city) => {
-  //maneira usar a api
   modoTemperatura=localStorage.getItem('modoTemperatura')
   let apiWeatherURL
   if (modoTemperatura=='true'){
@@ -103,8 +99,7 @@ const pegarTempo = async (city) => {
 };
 
 
-//faz com que tranforma a cidade escolhida vire um json
-
+//Melhor para pegar de Horario
 const pegarTempoFuturo = async(city)=>{
   modoTemperatura=localStorage.getItem('modoTemperatura')
   let urlForecast
@@ -113,6 +108,7 @@ const pegarTempoFuturo = async(city)=>{
   }else{
     urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial&lang=pt_br`;
   }
+//o fetch faz uma requisião http para o urlForecast
   const responseForecast = await fetch(urlForecast);
   const forecastData = await responseForecast.json();
   return forecastData;
@@ -123,10 +119,6 @@ const pegarTempoFuturo = async(city)=>{
 
 
 
-
-
-
-//alterar TempoPrincipal
 const AlterarTempo = async (city,temperatura) => {
   modoTemperatura=localStorage.getItem('modoTemperatura')
   const data = await pegarTempo(city);
@@ -137,15 +129,14 @@ const AlterarTempo = async (city,temperatura) => {
     return;
   }
 
-  const precipitação = data.rain ? data.rain['24h'] : 0;
-
-
   cidadeEscolhida.innerText =( data.name);
-  simboloTempo.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-  chuva.innerText =  `${precipitação} mm` ;
+
+  if (window.location.pathname == '/index.html') {
+    simboloTempo.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+  }
   vento.innerText = `${data.wind.speed}m/s`;
   Umidade.innerText = `${data.main.humidity}%`;
-  
+
   grausPrincipal.innerText = `${data.main.temp+temperatura}`;
   simboloTempoPrincipal.src= `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
   grausMaxima.innerText = `${data.main.temp_max+temperatura}`;
@@ -156,23 +147,19 @@ let temperaturaReal= data.main.temp
 
 if (modoTemperatura=="true"){ 
     if (temperaturaReal>32) {
-      console.log('bbbbb');
 
       alertarImg.src='img/IconeAlarme.png'
       alertaTexto.innerText="Ta quente pra caralho"
     }else{
-      console.log('aaaa');
       
         alertarImg.src='img/Sun.png'
       alertaTexto.innerText="Temperatura ta de boa"
     }
 }else{
   if (temperaturaReal>92) {
-    console.log('bbbbb');
     alertarImg.src='img/IconeAlarme.png'
     alertaTexto.innerText="Ta quente pra caralho"
   }else{
-    console.log('aaaa');
     
     alertarImg.src='img/Sun.png'
     alertaTexto.innerText="Temperatura ta de boa"
@@ -190,16 +177,54 @@ Estamos usando o find() para procurar a primeira previsão (dentro de forecastDa
 A função de teste converte o timestamp item.dt para uma data legível usando new Date(item.dt * 1000), e então verifica se a hora (getHours()) é igual à hora que estamos procurando.
 Se encontrar uma previsão com essa hora, o find() retorna esse elemento, permitindo que a previsão seja exibida.*/
 
-const forecastTimes = [9, 12, 15, 18];
+
+//Isso aqui é para pegar as horas e fazer com que a preciptação seja no horario q pessao esteja vendo
+let agora = new Date();
+let horasDeAgr = agora.getHours();
+
+
+function AcharHorario(HoraAtual) {
+  if (HoraAtual % 3 == 0) {
+
+    return HoraAtual
+    
+  }else{
+    while (HoraAtual % 3 !== 0) {
+
+      HoraAtual++
+
+      if (HoraAtual % 3 == 0) {
+        return HoraAtual
+      }
+    }
+  }
+ 
+}
+
+horasDeAgr = AcharHorario(horasDeAgr)
+
+
+//forecastTimes: Um array com os horários específicos (9h, 12h, 15h e 18h) para os quais a previsão será exibida.
+const forecastTimes = [horasDeAgr,9, 12, 15, 18];
 
 //forEach faz com que percorra todos os elementos do arrew 
 forecastTimes.forEach(hour => {
+    //forecastData.list contém a lista de previsões de tempo
+    //Findo compara o numero q ta saindo do retunr e procura para ver se tem na ForecastData
     const forecast = forecastData.list.find(item => {
         const forecastDate = new Date(item.dt * 1000);
         return forecastDate.getHours() === hour;
     });
 
+      //Isso aqui é para pegar as horas e fazer com que a preciptação seja no horario q pessao esteja vendo
+      let agora = new Date();
+      let horas = agora.getHours();
+      console.log(horas+hour);
+      
     if (forecast) {
+        if (hour==horas) {
+          chuva.innerText=`${forecast.pop * 100}%`          
+        }
         if (hour === 9) {
             graus9H.innerText = forecast.main.temp+temperatura;
             simboloTempo9H.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
@@ -256,11 +281,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Verifica o estado inicial do checkbox ao carregar a página
   if (toggle.checked) {
-    console.log('Fahrenheit selected');
     localStorage.setItem('modoTemperatura',false)
     AlterarTempoMetropolis('°F')
   } else {
-    console.log('Celsius selected');
     localStorage.setItem('modoTemperatura',true)
     AlterarTempoMetropolis('°C')
 
@@ -272,13 +295,11 @@ document.addEventListener('DOMContentLoaded', function() {
     city=localStorage.getItem('city')
 
     if (this.checked) {
-      console.log('Fahrenheit selected');
       localStorage.setItem('modoTemperatura',false)
       AlterarTempoMetropolis('°F')
       AlterarTempo(city,'°F')
 
     } else {
-      console.log('Celsius selected');
       localStorage.setItem('modoTemperatura',true)
       AlterarTempoMetropolis('°C')
       AlterarTempo(city,'°C')
@@ -307,30 +328,34 @@ pesquisa.addEventListener("keyup", (e) => {
 
  function responsivo() {
   let larguraTela = window.innerWidth;
-  console.log('aaa');
   
   if (larguraTela < 465) {
     // Redirecionar para a página para telas menores que 600px
-    
+
     if (window.location.pathname== '/phone.html') {
-      
+
     }else{
+      
       window.location.href = "/phone.html";
     }
     
 } else {
     if (window.location.pathname == '/index.html') {
-        console.log("Ta Dizendo q ta certo");
-        
+
     }else{
+      console.log('isso aqui ta funcionando?');
+
       window.location.href = "/index.html";
+
     }
 
 }  
 }
 
 
+
 window.addEventListener('resize',responsivo );
+
 window.addEventListener('DOMContentLoaded',responsivo );
 window.addEventListener('load',responsivo );
 window.addEventListener('orientationchange',responsivo );
