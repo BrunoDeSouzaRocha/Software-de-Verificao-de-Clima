@@ -119,7 +119,7 @@ const pegarTempo = async (city) => {
 //
 
 
-//Faz a msm coisa da fumção de cima so q ela é responsavel por pegar qualquer coisa relacionada a  previsões
+//Faz a msm coisa da fumção de cima so q ela é responsavel por pegar qualquer coisa relacionada a  previsões 
 const pegarTempoFuturo = async(city)=>{
   modoTemperatura=localStorage.getItem('modoTemperatura')
   let urlForecast
