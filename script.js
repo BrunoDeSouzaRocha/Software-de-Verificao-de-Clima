@@ -83,20 +83,40 @@ const exibirErro = () => {
 };
 
 
-//Essa função ta fazendo uma requisição e transformando em um json para o js conseguir ler, e tbm passa em C° ou em F°
+//Essa função ta fazendo uma requisição da api e transformando em um json para o js conseguir ler, e tbm passa em C° ou em F°
+//Nela a gente so precisa passar a cidade/lugar q a gente quer pegar a informação a respeito do tempo
 const pegarTempo = async (city) => {
+  //Aqui a gente ta pegando qual temperatura esta sendo usada celsius ou fahrenheit
   modoTemperatura=localStorage.getItem('modoTemperatura')
+
+  //ta criando uma variavel
   let apiWeatherURL
+
+  //ta pergundando se a temperatura for "verdadeira" vai ser celsius se nao for vai ser fahrenheit
   if (modoTemperatura=='true'){
+
+    // aqui ele ta requisitando a api e guardando toda a informação na variavel "apiWeatherURL" Nela a gente passa duas informações
+    // a cidade (city) e a nossa chave da api (apiKey)
     apiWeatherURL= `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
   }else{
+
+    //Mesma logica do de cima, so q em vez de passar as informações em celsius ta passando em fahrenheit
     apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}&lang=pt_br`;
   }
-//o fetch faz uma requisião http para o urlForecast
+
+  //o fetch faz uma requisião http para o urlForecast
   const res = await fetch(apiWeatherURL);
+  
+  //e aqui o a gente ta passando a requisição pra .json q é uma maneira do javaScript conseguir ler as informações da api
   const data = await res.json();
+
+  //e por fim ele retorna todo um conjunto de  informação a respeito de Tempo, e dps a gente vai pegar as informações
+  // q a gente quer com um metodo q ta la em baixo do codigo 
   return data;
 };
+
+
+//
 
 
 //Faz a msm coisa da fumção de cima so q ela é responsavel por pegar qualquer coisa relacionada a  previsões
